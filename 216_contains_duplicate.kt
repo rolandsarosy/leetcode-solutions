@@ -13,3 +13,11 @@ class Solution {
         return false
     }
 }
+
+
+// O(n) & O(n) solution (n=size of the array)
+class Solution {
+    fun containsDuplicate(nums: IntArray): Boolean {
+        return nums.size > nums.toSet().size // Remember: nums.toSet() is NOT the same as setOf(nums)
+    }
+}
