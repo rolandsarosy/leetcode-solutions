@@ -14,3 +14,20 @@ class Solution {
         throw IllegalStateException("Invalid state, shouldn't have been reachable.")
     }
 }
+
+// O(n) solution. :) 
+class Solution {
+    fun twoSum(nums: IntArray, target: Int): IntArray {
+        val traversalMap = mutableMapOf<Int, Int>() // Key: Number; Value: Index
+
+        for (i in nums.indices) {
+            if (traversalMap[target - nums[i]] != null) {
+                return intArrayOf(i, traversalMap[target - nums[i]]!!) // If memory complexity wasn't an issue this wouldn't be here as a separate variable can be tested outside of the if statement and the compiler would know this is a non-null at this point.
+            } else {
+                traversalMap.put(nums[i], i)
+            }
+        }
+
+        throw IllegalStateException("Invalid state, shouldn't have been reachable.")
+    }
+}
