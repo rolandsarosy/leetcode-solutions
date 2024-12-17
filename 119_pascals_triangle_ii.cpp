@@ -31,3 +31,19 @@ public:
         return generatedRow;
     }
 };
+
+// O(n) solution using a Binominal coefficient formula (https://en.wikipedia.org/wiki/Binomial_coefficient)... Yeah, I did not come up with this on my own, full disclosure.
+class Solution {
+public:
+    vector<int> getRow(int rowIndex) {
+        vector<int> resultRow = {1};
+        int currentCoefficient = 1;
+
+        for (long i = 1; i <= rowIndex; i++) {
+            currentCoefficient = (currentCoefficient * (rowIndex + 1 - i)) / i;
+            resultRow.push_back(currentCoefficient);
+        }
+
+        return resultRow;
+    }
+};
