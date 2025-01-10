@@ -25,3 +25,19 @@ class Solution {
         return previousNode
     }
 }
+
+// O(n) solution where I reduced the variable scoping to make the problem actually a two-pointer problem. 
+class Solution {
+    fun reverseList(head: ListNode?): ListNode? {
+        var previousNode: ListNode? = null
+        var currentNode: ListNode? = head
+        
+        while (currentNode != null) {
+            var nextNode = currentNode.next
+            currentNode.next = previousNode
+            previousNode = currentNode
+            currentNode = nextNode
+        }
+        return previousNode
+    }
+}
