@@ -41,3 +41,16 @@ class Solution {
         return previousNode
     }
 }
+
+// O(n) space and time complexity, but with a recursive approach as the leetcode
+class Solution {
+    fun reverseList(head: ListNode?, previous: ListNode? = null): ListNode? {
+        if (head == null) {
+            return previous
+        }
+        
+        val nextHead = head.next
+        head.next = previous
+        return reverseList(nextHead, head)
+    }
+}
