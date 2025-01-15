@@ -28,3 +28,17 @@ public:
         return previousNode;
     }
 };
+
+// O(n) time and space complexity recursive solution
+class Solution {
+public:
+    ListNode* reverseList(ListNode* head, ListNode* previous = nullptr) {
+        if (head == nullptr) {
+            return previous;
+        }
+
+        ListNode* nextHead = head->next;
+        head->next = previous;
+        return reverseList(nextHead, head);
+    }
+};
