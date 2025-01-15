@@ -42,7 +42,7 @@ class Solution {
     }
 }
 
-// O(n) space and time complexity, but with a recursive approach as the leetcode
+// O(n) space and time complexity, but with a recursive approach
 class Solution {
     fun reverseList(head: ListNode?, previous: ListNode? = null): ListNode? {
         if (head == null) {
