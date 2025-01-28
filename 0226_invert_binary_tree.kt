@@ -24,3 +24,27 @@ class Solution {
         return root
     }
 }
+
+// iterative BFS solution using a stack. Comes with an O(n) space and time complexity.
+class Solution {
+    fun invertTree(root: TreeNode?): TreeNode? {
+        if (root == null) return null
+
+        val stack = ArrayDeque<TreeNode>()
+        stack.addFirst(root)
+
+        while (stack.isNotEmpty()) {
+            val element: TreeNode = stack.first();
+            stack.removeFirst();
+
+            val temp = element.left
+            element.left = element.right
+            element.right = temp
+
+            if (element.left != null) stack.add(element.left)
+            if (element.right != null) stack.add(element.right)
+        }
+
+        return root
+    }
+}
