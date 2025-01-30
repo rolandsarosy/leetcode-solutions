@@ -39,3 +39,29 @@ private:
         return 1 + max(leftHeight, rightHeight);
     }
 };
+
+
+// O(n) solution, very similar to to the one above, without the Y I K E S exception-usage.
+class Solution {
+public:
+    bool isBalanced(TreeNode* root) {
+        return dfsTravel(root) != -1;
+    }
+
+private: 
+    int dfsTravel(TreeNode* node) {
+        if (node == nullptr) return 0;
+
+        int leftHeight = dfsTravel(node->left);
+        if (leftHeight == -1) return -1;
+
+        int rightHeight = dfsTravel(node->right);
+        if (rightHeight == -1) return -1;
+
+        if (abs(leftHeight - rightHeight) > 1) {
+            return -1;
+        }
+
+        return 1 + max(leftHeight, rightHeight);
+    }
+};
