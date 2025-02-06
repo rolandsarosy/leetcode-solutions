@@ -35,3 +35,25 @@ public:
     }
 };
 
+// Final solution. Function overloading with proper memoization. 
+// O(n) time and space complexity.
+class Solution {
+public:
+    int fib(int n) {
+        vector<int> memo(n + 1, -1);
+        return fib(n, memo);
+    }
+
+    int fib(int n, vector<int>& memo) {
+        if (n == 0) return 0;
+        if (n == 1) return 1;
+
+        if (memo[n] != -1) {
+            return memo[n];
+        } else {
+            memo[n] = fib(n-1, memo) + fib(n-2, memo);
+        }
+
+        return memo[n];
+    }
+};
