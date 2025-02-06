@@ -13,4 +13,25 @@ public:
     }
 };
 
-// memoized example will come below here
+// Interestingly, I thought this would work, but it does not. The reason for it is that for each recursive call, we're copying the contents of the vector. It simply runs out of memory on Leetcode.
+// Space complexity: O(2^n)
+class Solution {
+public:
+    int fib(int n, vector<int> memo = {}) {
+        if (n == 0) return 0;
+        if (n == 1) return 1;
+
+        if (memo.empty()) {
+            memo.resize(n + 1, -1);
+        }
+
+        if (memo[n] != -1) {
+            return memo[n];
+        } else {
+            memo[n] = fib(n-1, memo) + fib(n-2, memo);
+        }
+
+        return memo[n];
+    }
+};
+
